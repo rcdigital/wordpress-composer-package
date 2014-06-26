@@ -1,0 +1,37 @@
+{
+	"name": "workspace/wp-project",
+	"description": "Standard pattern wordpress project",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress",
+        "type": "webroot",
+        "version": "3.9.1",
+        "dist": {
+          "type": "zip",
+          "url": "http://br.wordpress.org/wordpress-3.9.1-pt_BR.zip"
+        },
+        "require" : {
+          "fancyguy/webroot-installer": "1.0.0"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "wordpress": "3.9.1",
+    "fancyguy/webroot-installer": "1.0.0",
+    "wpackagist-plugin/akismet": "dev-trunk",
+    "wpackagist-plugin/captcha": ">=3.9",
+    "wpackagist-theme/wp-rootstrap":"*"
+  },
+  "extra": {
+    "webroot-dir": "wp",
+    "webroot-package": "wordpress"
+  }
+}
