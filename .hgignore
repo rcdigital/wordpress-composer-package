@@ -1,0 +1,7 @@
+wp/
+wp-content/plugins
+composer.lock
+vendor
+user.py
+.pyc
+.git
