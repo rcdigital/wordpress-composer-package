@@ -8,5 +8,5 @@ You may include other settings here that you only want enabled on your local dev
 
 define( 'DB_NAME', '{{DB_NAME}}' );
 define( 'DB_USER', '{{DB_USER}}' );
-define( 'DB_PASSWORD', '{{DB_PASSWORD}}' );
+define( 'DB_PASSWORD', '{{DB_PASS}}' );
 define( 'DB_HOST', '{{DB_HOST}}' ); // Probably 'localhost'
