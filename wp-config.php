@@ -4,10 +4,12 @@
 // ===================================================
 if ( file_exists( dirname( __FILE__ ) . '/local-settings.php' ) ) {
   define( 'WP_LOCAL_DEV', true );
-	include( dirname( __FILE__ ) . '/local-settings.php' );
+  define( 'WP_STATIC_URL', '//'. $_SERVER['HTTP_HOST'] . '/app' );
+  include( dirname( __FILE__ ) . '/local-settings.php' );
 } else {
-	define( 'WP_LOCAL_DEV', false );
-	include( dirname( __FILE__ ) . '/server-settings.php' );
+  define( 'WP_LOCAL_DEV', false );
+  define( 'WP_STATIC_URL', '//'. $_SERVER['HTTP_HOST'] . '/dist' );
+  include( dirname( __FILE__ ) . '/server-settings.php' );
 }
 
 // ========================
@@ -16,15 +18,17 @@ if ( file_exists( dirname( __FILE__ ) . '/local-settings.php' ) ) {
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
 define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
 define( 'WP_STATIC_DIR', dirname(__FILE__) . '/app' );
-define( 'WP_STATIC_URL', '//'. $_SERVER['HTTP_HOST'] . '/app' );
-
 // ================================================
 // You almost certainly do not want to change these
 // ================================================
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
-
+// ==============================================================
+// Salts, for security
+// Grab these from: https://api.wordpress.org/secret-key/1.1/salt
+// ==============================================================
 include('salts.php');
+
 
 // ==============================================================
 // Table prefix
@@ -55,7 +59,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 // Load a Memcached config if we have one
 // ======================================
 if ( file_exists( dirname( __FILE__ ) . '/memcached.php' ) )
-	$memcached_servers = include( dirname( __FILE__ ) . '/memcached.php' );
+  $memcached_servers = include( dirname( __FILE__ ) . '/memcached.php' );
 
 // ===========================================================================================
 // This can be used to programatically set the stage when deploying (e.g. production, staging)
@@ -67,5 +71,5 @@ define( 'STAGING_DOMAIN', '%%WP_STAGING_DOMAIN%%' ); // Does magic in WP Stack t
 // Bootstrap WordPress
 // ===================
 if ( !defined( 'ABSPATH' ) )
-	define( 'ABSPATH', dirname( __FILE__ ) . '/wp/' );
+  define( 'ABSPATH', dirname( __FILE__ ) . '/wp/' );
 require_once( ABSPATH . 'wp-settings.php' );
