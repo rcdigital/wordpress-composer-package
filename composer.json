@@ -28,6 +28,7 @@
     "fancyguy/webroot-installer": "1.0.0",
     "wpackagist-plugin/akismet": "dev-trunk",
     "wpackagist-plugin/captcha": ">=3.9",
+    "mailchimp/mailchimp": "dev-master",
     "wpackagist-theme/wp-rootstrap":"*"
   },
   "extra": {
